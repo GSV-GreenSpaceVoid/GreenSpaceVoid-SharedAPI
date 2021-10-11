@@ -30,7 +30,7 @@ public class Networking {
 
         kryo.register(ArrayList.class);
         kryo.register(byte[].class);
-        kryo.register(NetworkedLogin.CLIENT_SEND.LoginMessage.class);
+        kryo.register(NetworkedLogin.CLIENT.CLIENT_SEND_LoginMessage.class);
         /*
         kryo.register(ArrayList.class);
         kryo.register(LoginMessage.class);

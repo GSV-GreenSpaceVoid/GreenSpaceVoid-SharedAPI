@@ -9,14 +9,14 @@ public class NetworkedLogin {
 
 
 
-    public static class CLIENT_SEND{
+    public static class CLIENT {
 
-        public static class LoginMessage extends SharedMessage {
+        public static class CLIENT_SEND_LoginMessage extends SharedMessage {
 
             public String username;
             public byte[] password;
 
-            public LoginMessage(){
+            public CLIENT_SEND_LoginMessage(){
 
 
                 super();
@@ -28,8 +28,8 @@ public class NetworkedLogin {
         public static class CLIENT_RECEIVE_LoginStatusMessage extends SharedMessage{
             //When this message is received, or isn't. Log the player in and get things going B)
 
-            boolean loginAccepted;
-            String lastLoggedIn;
+            public boolean loginAccepted;
+            public String lastLoggedIn;
 
 
 

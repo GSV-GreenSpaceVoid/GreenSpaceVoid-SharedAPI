@@ -94,6 +94,25 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
             }
         }
 
+        public static class PlayerShipMessage extends SharedMessage{
+
+            public String entityID;
+            public double dir;
+            public double engineThrustLevel;
+
+            public PlayerShipMessage(){}
+
+
+
+
+
+
+        }
+
+
+
+
+
         public static class TargetSpecificDataMessage extends SharedMessage{
             //Currently unused.
             //Leave this as an empty stub

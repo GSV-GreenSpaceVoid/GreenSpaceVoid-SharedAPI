@@ -1,7 +1,7 @@
 package com.greenspacevoidsharedAPI.networking.network.messages.gameEntity;
 
 import com.greenspacevoidsharedAPI.networking.network.messages.SharedMessage;
-import com.greenspacevoidsharedAPI.networking.renderer.AllRenderableEntities;
+import com.greenspacevoidsharedAPI.networking.renderer.EntityIndex;
 import com.greenspacevoidsharedAPI.networking.renderer.AnimationStates;
 
 import java.util.ArrayList;
@@ -13,22 +13,21 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
 
     //Entity
 
-    int index; //THIS NUMBER IS SINGLE HANDEDLY THE MOST IMPORTANT OF THEM ALL! It unifies the data between
+    public String entityIDString; //THIS NUMBER IS SINGLE HANDEDLY THE MOST IMPORTANT OF THEM ALL! It unifies the data between
     //server and client without using fixed-size arrays.
-    AllRenderableEntities model;
-    AnimationStates primaryAnimationState, secondaryAnimationState;;
-    String playerName;
+    public EntityIndex model;
+    public String name;
 
 
     //Renderer specific info
-    boolean isRendered;//<-Imagine this variable as being the dividing line of the forest and the trees that make up the forest
+    public boolean isRendered;//<-Imagine this variable as being the dividing line of the forest and the trees that make up the forest
     //"I can't see the asteroid field because the asteroids are in the way!:"
-    double x,y,direction, distance;
+    public double x,y,direction, distance;
 
 
     //UI Specific info
-    boolean hasHealthPool, isTargetable, distanceInAUs;; //IMPORTANT: So that we do NOT render what doesn't need to be rendered.
-    double currentShield, maxShield, currentHealth, maxHealth, currentHull, maxHull;
+    public boolean hasHealthPool, isTargetable, distanceInAUs;; //IMPORTANT: So that we do NOT render what doesn't need to be rendered.
+    public double currentShield, maxShield, currentHealth, maxHealth, currentHull, maxHull;
 
 
 
@@ -41,13 +40,31 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
     }
     ///////////
 
+    public static class NetworkedVessel extends NetworkedEntity{
+
+        boolean isIndestructible;
+
+        public NetworkedVessel(){
+
+        }
+
+
+
+
+
+
+    }
+
+
+
+
 
 
     public static class CLIENT_RECEIVE {
 
 
         public static class AddEntitiesMessage extends SharedMessage{
-            ArrayList<NetworkedEntity> entities = new ArrayList<>();
+            public ArrayList<NetworkedEntity> entities = new ArrayList<>();
             public AddEntitiesMessage(){
                 super();
 
@@ -63,14 +80,14 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
         }
 
         public static class RemoveEntitiesMessage extends SharedMessage{
-            ArrayList<Integer> indices = new ArrayList<>();
+            public ArrayList<String> ids = new ArrayList<>();
             public RemoveEntitiesMessage(){
                 super();
             }
         }
 
         public static class UpdateEntitiesMessage extends SharedMessage{
-            ArrayList<NetworkedEntity> entities = new ArrayList<>();
+            public ArrayList<NetworkedEntity> entities = new ArrayList<>();
             public UpdateEntitiesMessage(){
                 super();
 
@@ -116,7 +133,6 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
             }
 
         }
-
 
 
         public static class RequestRefreshMessage extends SharedMessage{

@@ -15,20 +15,16 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
 
     public String entityIDString; //THIS NUMBER IS SINGLE HANDEDLY THE MOST IMPORTANT OF THEM ALL! It unifies the data between
     //server and client without using fixed-size arrays.
-    public EntityIndex model;
     public String name;
 
 
     //Renderer specific info
-    public boolean isRendered;//<-Imagine this variable as being the dividing line of the forest and the trees that make up the forest
-    //"I can't see the asteroid field because the asteroids are in the way!:"
+    public boolean isRendered;
     public double x,y,direction, distance;
 
 
-    //UI Specific info
-    public boolean hasHealthPool, isTargetable, distanceInAUs;; //IMPORTANT: So that we do NOT render what doesn't need to be rendered.
-    public double currentShield, maxShield, currentHealth, maxHealth, currentHull, maxHull;
-
+    public boolean isTargetable;
+    public boolean distanceInAUs;; //IMPORTANT: So that we do NOT render what doesn't need to be rendered.
 
 
     //X and Y work off of a server-processed local origin. Yes, the server can do everything. Better more CPU work on server
@@ -42,7 +38,7 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
 
     public static class NetworkedVessel extends NetworkedEntity{
 
-        boolean isIndestructible;
+
 
         public NetworkedVessel(){
 
@@ -55,7 +51,16 @@ public class NetworkedEntity{//Object Class. Data networking classes are nested 
 
     }
 
+    public static class TargetedEntity{
 
+        public TargetedEntity(){
+
+        }
+
+
+
+
+    }
 
 
 

@@ -2,6 +2,7 @@ package com.greenspacevoidsharedAPI.networking.network;
 
 import com.esotericsoftware.kryo.Kryo;
 
+import com.greenspacevoidsharedAPI.networking.network.messages.gameEntity.NetworkedEntity;
 import com.greenspacevoidsharedAPI.networking.network.messages.login.NetworkedLogin;
 
 import java.util.ArrayList;
@@ -32,6 +33,12 @@ public class Networking {
         kryo.register(byte[].class);
         kryo.register(NetworkedLogin.CLIENT.CLIENT_SEND_LoginMessage.class);
         kryo.register(NetworkedLogin.CLIENT.CLIENT_RECEIVE_LoginStatusMessage.class);
+        kryo.register(NetworkedEntity.class);
+        kryo.register(NetworkedEntity.CLIENT_RECEIVE.AddEntitiesMessage.class);
+        kryo.register(NetworkedEntity.CLIENT_RECEIVE.FullEntityRefreshMessage.class);
+        kryo.register(NetworkedEntity.CLIENT_RECEIVE.UpdateEntitiesMessage.class);
+        kryo.register(NetworkedEntity.CLIENT_RECEIVE.RemoveEntitiesMessage.class);
+        
         /*
         kryo.register(ArrayList.class);
         kryo.register(LoginMessage.class);

@@ -38,7 +38,7 @@ public class Networking {
         kryo.register(NetworkedEntity.CLIENT_RECEIVE.FullEntityRefreshMessage.class);
         kryo.register(NetworkedEntity.CLIENT_RECEIVE.UpdateEntitiesMessage.class);
         kryo.register(NetworkedEntity.CLIENT_RECEIVE.RemoveEntitiesMessage.class);
-        
+
         /*
         kryo.register(ArrayList.class);
         kryo.register(LoginMessage.class);
